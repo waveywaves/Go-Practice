@@ -46,16 +46,16 @@ Types for variables can be set explicitly or implicitly.
 As Go is a statically typed language these values cannot be changed during runtime.
 
 Constants in Go use "=" for both implicit and explicit declaration.
-Go also has pointers.
+"time" package allows to use different time operations.
 
 #### Arithmatic Operations
 + , - . * , / , %
-&  Bitwise AND
-|  Bitwise OR
-^  Bitwise XOR
-&^ Bit Clear
-<< LeftShift
->> Rightshift
+"&"  Bitwise AND
+"|"  Bitwise OR
+"^"  Bitwise XOR
+"&^" Bit Clear
+"<<" LeftShift
+">>" Rightshift
 
 Mathematics requires the same types for the operators to function properly
 
