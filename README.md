@@ -28,3 +28,11 @@ $ go install package2
 > /nameofgocomppath/bin/helloworld
 > /nameofgocomppath/pkg
 ```
+
+### 2> Strings
+
+Different ways of formatting and printing stuff.
+
+
+
+
