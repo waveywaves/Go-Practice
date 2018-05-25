@@ -4,7 +4,7 @@ This repository will focus on learing Go.
 
 ## Progress
 
-- Hello World !
+### 1> Hello World !
 > Go Packages and directory strucure for compilation
 
 > /nameofgocomppath
