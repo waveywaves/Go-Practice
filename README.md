@@ -40,3 +40,42 @@ Taking in User Input from the console with bufio and fmt's Scanln.
 Apart from this we also see how to handle the input which we return from the console.
 
 
+### 4> Variables
+Types for variables can be set explicitly or implicitly.
+"=" operator is for explicit and ":=" is for implicit.
+As Go is a statically typed language these values cannot be changed during runtime.
+
+Constants in Go use "=" for both implicit and explicit declaration.
+Go also has pointers.
+
+#### Arithmatic Operations
++ , - . * , / , %
+&  Bitwise AND
+|  Bitwise OR
+^  Bitwise XOR
+&^ Bit Clear
+<< LeftShift
+>> Rightshift
+
+Mathematics requires the same types for the operators to function properly
+
+#### Types
+bool
+string 
+uint8-64 (number of bits)
+int8-64 (number of bits)
+byte 
+int
+uintptr (large enough to hold the bit pattern of any pointer)
+float32-64
+complex64-128 (Complex Numbers)
+Arrays
+Slices
+Maps
+Structs
+Functions
+Interfaces
+Channels
+Pointers
+
+
