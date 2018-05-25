@@ -34,5 +34,9 @@ $ go install package2
 Different ways of formatting and printing stuff.
 
 
+### 3> Console Input
+
+Taking in User Input from the console with bufio and fmt's Scanln.
+Apart from this we also see how to handle the input which we return from the console.
 
 
