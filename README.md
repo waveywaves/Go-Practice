@@ -104,6 +104,53 @@ sli2 := append(arr[1:3]);
 
 ### 7> Memory Allocation
 
-#### Slices
+- The runtime operates in its own background threads. Memory is managed completely in the background and no allocation of deallocation of memory needs to be handled by the programmer. 
+- make(), new() are used to create instances of Maps, Slices, Channels
+```sh
+new()  // Allocates but does not initalize memory, returns address
+make() // Allocates and initalizes memory, returns address
+```
+- The Go Garbage Collector deallocated memory for objects which are out of scope or set to nil.
 
+#### Maps
+
+So maps can be declared in the following way
+```sh
+mp := make(map[int]string) 
+```
+In the above example we are creating maps which would have the keys as integers and the value for the key as a string. 
+Maps are similar to dictionaries in Python with the difference being that the Keys and Values can be of only one type.
+
+#### Structs
+
+Structs are the same as they are in C. They are declared as follows.
+```sh
+type Dog struct {
+    Breed string
+    Weight int
+}
+```
+They are meant to be used like classes, but Go doesn't have the advanced OOP concepts such as inheritance and such. The only OOP Concepts it has are Encapslation and Type Memeber functions.
+Go thorugh this [link](https://www.ardanlabs.com/blog/2013/07/object-oriented-programming-in-go.html) for more information about Object Oriented Programming in Go.
+
+
+### 8> Functions
+
+Basic functions in Go are little different than the normal way we end up writing functions.
+```sh
+func function(value int) int {
+    integervalue := 100
+    return integervalue
+}
+
+func function(value int, value2 string) (int, string){
+    return 10, "word"
+}
+
+func function(value int, value string) (number int, sentence string){
+    number = value+10
+    sentence = value+"adddedForReturn"
+    return
+}
+```
 
