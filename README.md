@@ -96,7 +96,7 @@ arr[0] = "value"
 #### Slices
 
 Slices are no different from Arrays with the only difference being that their size is not fixed, they are declared differently and they make up arrays.
-```sh
+```go
 var sli1 []string;
 var arr [5]int = [3]int{1,2,3,4,5};
 sli2 := append(arr[1:3]);
@@ -115,7 +115,7 @@ make() // Allocates and initalizes memory, returns address
 #### Maps
 
 So maps can be declared in the following way
-```sh
+```go
 mp := make(map[int]string) 
 ```
 In the above example we are creating maps which would have the keys as integers and the value for the key as a string. 
@@ -124,7 +124,7 @@ Maps are similar to dictionaries in Python with the difference being that the Ke
 #### Structs
 
 Structs are the same as they are in C. They are declared as follows.
-```sh
+```go
 type Dog struct {
     Breed string
     Weight int
@@ -137,7 +137,7 @@ Go thorugh this [link](https://www.ardanlabs.com/blog/2013/07/object-oriented-pr
 ### 8> Functions
 
 Basic functions in Go are little different than the normal way we end up writing functions.
-```sh
+```go
 func function(value int) int {
     integervalue := 100
     return integervalue
@@ -153,4 +153,27 @@ func function(value int, value string) (number int, sentence string){
     return
 }
 ```
+#### Functions for Custom Types
 
+Custom Types would be structs which would act like Types which would be made by you.
+```go
+type Dog struct {
+    Breed string
+    Weight int
+    Sound string
+}
+```
+
+Functions for Custom Types
+```go
+func (d Dog) Speak(){
+    fmt.Println(d.Sound)   
+}
+```
+
+### 9> Interfaces
+
+Interfaces are basically wrapper structs. 
+*Interfaces should be declared along with the structs that need to be declared which can use these interfaces.
+*If there are functions which are a part of the interface and would eb inherited by the structs which we are taking about, the functions need to be declared for each of the structs.
+*We can say that interfaces help to define common attributes or functions for similar objects or structs.
