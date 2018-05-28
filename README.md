@@ -175,5 +175,21 @@ func (d Dog) Speak(){
 
 Interfaces are basically wrapper structs. 
 * Interfaces should be declared along with the structs that need to be declared which can use these interfaces.
-* If there are functions which are a part of the interface and would eb inherited by the structs which we are taking about, the functions need to be declared for each of the structs.
+* If there are functions which are a part of the interface and would be inherited by the structs which we are taking about, the functions need to be declared for each of the structs.
 * We can say that interfaces help to define common attributes or functions for similar objects or structs.
+
+### 10> Error Handling
+
+Go does not ahve the usual error handling stuff we ahve in other languages.
+Instead we ahve the "errors" package with which we can make and erro object which allows us to basically form a template for handling errors properly
+```go
+import "errors"
+import "fmt"
+
+func main() {
+    MyError := errors.New("Error !!")
+    fmt.Println(MyError.Error()) // gives the same output as fmt.Println(MyError)
+}
+```
+We usually define a function to return an error along with any toher value it might return. Error handling goes hand in hand with conditionals as there is no exception handling of sorts.
+
