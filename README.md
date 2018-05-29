@@ -191,5 +191,7 @@ func main() {
     fmt.Println(MyError.Error()) // gives the same output as fmt.Println(MyError)
 }
 ```
-We usually define a function to return an error along with any toher value it might return. Error handling goes hand in hand with conditionals as there is no exception handling of sorts.
+* We usually define a function to return an error along with any toher value it might return. 
+* Error handling goes hand in hand with conditionals as there is no exception handling of sorts.
+
 
