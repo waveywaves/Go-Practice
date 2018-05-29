@@ -231,17 +231,33 @@ Here we are going to start looking into how we can get data from the internet an
 ```go
 import (
     "fmt"
-    "net/http"
-    "io/ioutil"
+    "net/http" // for making the get request
+    "io/ioutil" // foir reading the response and getting the output in bytes
+    "encoding/xml" // This library allows us to parse xml very nicely
 )
 ```
 > Important functions
 ```go
-http.Get()
-ioutil.ReadAll()
+http.Get() // returns response and error
+ioutil.ReadAll() //returns bytes and error
+xml.Unmarshall() // based on reflection, need to be give the bytes and the struct where we will place our data
+```
+#### Struct tags
+
+```go
+type Urlset struct {
+    Urls []Url `xml:"url"` // The third element here is a struct tag which would be used by reflection which we would look into further
+}
+type Url struct {
+    Location string `xml:"loc`
+}
+func (u Url) String() string { // This is a GOhack as I would like to call it which would allow for returning a string instead of Url Type to the Urlset struct
+    return u.Sprintf(u.Location)
+}
 ```
 
 ## In-depth things to Cover
 #### [io.Reader in depth](https://medium.com/@matryer/golang-advent-calendar-day-seventeen-io-reader-in-depth-6f744bb4320b)
+#### Reflection [1](https://blog.golang.org/laws-of-reflection),[2](https://medium.com/capital-one-developers/learning-to-use-go-reflection-822a0aed74b7)
 
 
