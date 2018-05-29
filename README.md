@@ -226,4 +226,22 @@ We consider using these if we want to make changes to the already existing value
 func (c *Car) function(){}
 ```
 
+### 13> Simple Web Scraping
+Here we are going to start looking into how we can get data from the internet and parse it in a simple webscraping web app.
+```go
+import (
+    "fmt"
+    "net/http"
+    "io/ioutil"
+)
+```
+> Important functions
+```go
+http.Get()
+ioutil.ReadAll()
+```
+
+## In-depth things to Cover
+#### [io.Reader in depth](https://medium.com/@matryer/golang-advent-calendar-day-seventeen-io-reader-in-depth-6f744bb4320b)
+
 
