@@ -195,3 +195,29 @@ func main() {
 * Error handling goes hand in hand with conditionals as there is no exception handling of sorts.
 
 
+### 11> Really Simple Web App
+
+We use the "net/http" package to initialize a http socket and write data to response using the following functions.
+
+```go
+func main(){
+    http.HandleFunc("/path",handlerfunction)
+    http.ListenandServe(":3000",nil) // We would be listening on the port 3000
+}
+func handlerfunction(w http.ResponseWriter, r *http.Request){
+    Fprintf(w, "Writing to the Resopnse") 
+}
+```
+
+### 12> Methods / Functions and their Receivers
+
+Methods in Go have receivers which are basically the object/struct they work on. 
+Revceivers are basically "this" is Java or "self" in Python.
+
+#### Value Receivers
+We consider using these in case we need to use the values which have been declared in a n instance of a particular custom type.
+
+#### Pointer Receivers
+We consider using these if we want to make changes to the already existing values in the instance of the custom type.
+
+
