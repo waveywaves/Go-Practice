@@ -216,8 +216,14 @@ Revceivers are basically "this" is Java or "self" in Python.
 
 #### Value Receivers
 We consider using these in case we need to use the values which have been declared in a n instance of a particular custom type.
+```go
+func (c Car) function(){}
+```
 
 #### Pointer Receivers
 We consider using these if we want to make changes to the already existing values in the instance of the custom type.
+```go
+func (c *Car) function(){}
+```
 
 
