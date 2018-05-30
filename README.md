@@ -288,6 +288,51 @@ t.execute(w,data)
 This would help a lot in dynamically generating components for the webpage that one would be building. Apart from that, this this available in go as its own inbuilt package.
 
 
+### 15> Goroutines Basics
+
+Goroutines are nothing but lightweight threads of execution. In GO we use them to run different tasks concurrently. When we talk about concurrency we are not taling about parallelism. Parallelism means that multiple tasks run a the same time whereas concurrency means that multiple tasks are dealt with at the same time and based on resource availability they are provided the required resources.
+
+To convert a particular task of execution such as a function we insert the "go" keyword at the start of the function call.
+
+```go
+function("doing something") //before
+go function("doing something") //after
+```
+Once we do the above, what will happen is that the particular function would be running in the background and with it other processes will run concurrently.
+* One thing to remeber is that if all tasks have been initialized as 
+goroutines as the above and the program runs, it is possible that the program may exit as there is no such task which has to be be executed for sure. 
+* For the above problem we would need to syncronize the threads properly so that we have a some kind of syncronized execution.
+
+```go
+import "sync" // for syncronization utilities
+
+wg = sync.WaitGroup // WaitGroup struct
+```
+
+* Now we have initialized "wg" as a WaitGroup to which we can Add a process which would be getting executed and once we are Done with a certain process the counter in the WaitGroup will be decremented.
+
+```go
+func function(s string) {
+    defer wg.Done()
+    fmt.Println(s)
+}
+
+func main(){
+    wg.Add(1) // increment wait counter
+    go function("doing something1")
+    wg.Add(2)
+    go function("doing something2")
+    go function("doing something3")
+    wg.Wait() 
+}
+```
+
+* In the above if you notice we have 'defer'ed the statement wg.Done() as we would want Done() to run for sure after the function executes.
+* In other words if there is an error of some sort which happens before the Done() function then the waitgroup will reamin hanging.
+
+ 
+
+
 ## In-depth things to Cover
 #### [io.Reader in depth](https://medium.com/@matryer/golang-advent-calendar-day-seventeen-io-reader-in-depth-6f744bb4320b)
 #### Reflection [1](https://blog.golang.org/laws-of-reflection),[2](https://medium.com/capital-one-developers/learning-to-use-go-reflection-822a0aed74b7)
