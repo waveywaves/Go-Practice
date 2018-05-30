@@ -1,0 +1,16 @@
+
+<h1>
+    {{.Title}}
+</h1>
+
+{{range $key,$value := .News}}
+    <h3>
+        {{$key}}
+    </h3>
+    <p>
+        {{$value.Url}}
+    </p>
+    <p>
+        {{$value.Keyword}}
+    </p>
+{{end}}

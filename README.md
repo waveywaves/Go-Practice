@@ -256,6 +256,38 @@ func (u Url) String() string { // This is a GOhack as I would like to call it wh
 }
 ```
 
+### 14> HTML Templates
+
+In go we can create web apps with the use of templates
+```go
+import "html/template"
+```
+> Important Functions
+```go
+t, _ := template.ParseFiles("template.html")
+t.execute(w,data)
+```
+> html template example
+```html
+<h1>
+    {{.Title}}
+</h1>
+
+{{range $key,$value := .News}}
+    <h3>
+        {{$key}}
+    </h3>
+    <p>
+        {{$value.Url}}
+    </p>
+    <p>
+        {{$value.Keyword}}
+    </p>
+{{end}}
+```
+This would help a lot in dynamically generating components for the webpage that one would be building. Apart from that, this this available in go as its own inbuilt package.
+
+
 ## In-depth things to Cover
 #### [io.Reader in depth](https://medium.com/@matryer/golang-advent-calendar-day-seventeen-io-reader-in-depth-6f744bb4320b)
 #### Reflection [1](https://blog.golang.org/laws-of-reflection),[2](https://medium.com/capital-one-developers/learning-to-use-go-reflection-822a0aed74b7)

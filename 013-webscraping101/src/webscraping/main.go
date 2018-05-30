@@ -46,6 +46,9 @@ func main() {
 	var dataStruct UrlsetIndex
 	xml.Unmarshal(bytes, &dataStruct)
 
-	fmt.Println(dataStruct.Urls)
+	//fmt.Println(dataStruct.Urls)
 
+	for _, url := range dataStruct.Urls { //index and value is given
+		fmt.Printf("%s \n", url)
+	}
 }
