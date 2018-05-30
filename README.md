@@ -330,11 +330,23 @@ func main(){
 * In the above if you notice we have 'defer'ed the statement wg.Done() as we would want Done() to run for sure after the function executes.
 * In other words if there is an error of some sort which happens before the Done() function then the waitgroup will reamin hanging.
 
- 
+### 16> Channels
+
+Channels allow for connecting the concurrent parts of a Go Program.
+```go
+out chan<- int // send-only channel
+in  <-chan int // receive-only channel
+any chan int   // send or receive
+```
+#### Blocking
+
+Unlike the time when we used the "sync" package to take care of the syncronization to block code to execute with the Wait, Add, Done functions, channels block their own goroutine till they get completely executed.
 
 
-## In-depth things to Cover
-#### [io.Reader in depth](https://medium.com/@matryer/golang-advent-calendar-day-seventeen-io-reader-in-depth-6f744bb4320b)
-#### Reflection [1](https://blog.golang.org/laws-of-reflection),[2](https://medium.com/capital-one-developers/learning-to-use-go-reflection-822a0aed74b7)
 
 
+## Things to Cover / Covered
+#### io.Reader in depth [1](https://medium.com/@matryer/golang-advent-calendar-day-seventeen-io-reader-in-depth-6f744bb4320b)
+#### Reflection [1](https://blog.golang.org/laws-of-reflection), [2](https://medium.com/capital-one-developers/learning-to-use-go-reflection-822a0aed74b7)
+#### Goroutine Leak [1](https://medium.com/golangspec/goroutine-leak-400063aef468)
+#### Complete Channels [1](https://www.sohamkamani.com/blog/2017/08/24/golang-channels-explained/)
