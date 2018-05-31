@@ -343,6 +343,24 @@ any chan int   // send or receive
 Unlike the time when we used the "sync" package to take care of the syncronization to block code to execute with the Wait, Add, Done functions, channels block their own goroutine till they get completely executed.
 
 
+### 17> Adding Concurrency to a Web APP
+
+To add concurrency to an app we would need to breakdown each of the tasks it is performing and how the data is moving between goroutines.
+In the Example App which we have made for this which is a news aggregator has an important routine which takes the news data an daggregates it onto a web page. 
+We have converted the whole thing into two different routines considering main and the news routine which would send over the data through a channel.
+
+#### Converting a function to a goroutine
+* Insert "go" at the start of the function(no return, value would be passed on through a channel) execution.
+* Initialize Waitgroup wg.
+* Insert Add(1) on the top of the goroutine which we have defined to increment waitgroup parameter.
+* Append Done() to the goroutine function (to decrement WaitGroup) and defer it so that it runs at the end whatever the issue.
+* At the end of defining all goroutines append Wait() to create Blocking to wait for all the goroutines to finish executing.
+* Initialize the channel which we would be passing between the goroutines.
+* Pass the channel to the goroutine function.
+* Add value to the channel through the function.
+* Close the channel after the WaitGroup Wait() exits.
+* Now the channel is populated and the values can be used.
+
 
 
 ## Things to Cover / Covered

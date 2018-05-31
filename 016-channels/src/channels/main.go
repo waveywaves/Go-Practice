@@ -1,29 +1,32 @@
 package main
 
-import (
-	"fmt"
-	"sync"
-)
+import "fmt"
+import "sync"
+
+var count int = 1
+
+func say(s int, a chan int) {
+	defer wg.Done()
+	count++
+	a <- s * count
+}
 
 var wg sync.WaitGroup
 
-func addtochannel(c chan int, i int) {
-	defer wg.Done()
-	c <- i
-}
-
 func main() {
+
 	channel := make(chan int)
-	defer close(channel)
 
-	for i := 0; i < 10; i++ {
-		wg.Add(1)
-		go addtochannel(channel, i)
-		/*if the above is not a go routine we get the error below
-		fatal error: all goroutines are asleep - deadlock!*/
-	}
+	//channel<-
+	//<-channel
+	//channel
 
-	for i := 0; i < 12; i++ {
-		fmt.Println(<-channel)
-	}
+	//var num int = 100
+
+	wg.Add(2)
+	go say(100, channel)
+	go say(200, channel)
+	//go say(num, channel)
+
+	fmt.Println(<-channel)
 }
