@@ -362,9 +362,9 @@ We have converted the whole thing into two different routines considering main a
 * Now the channel is populated and the values can be used.
 
 ### 18> Streaming IO
-####### [io.Reader in depth](https://medium.com/@matryer/golang-advent-calendar-day-seventeen-io-reader-in-depth-6f744bb4320b)
-####### [A simple beginners tutorial to io.Writer in Golang](https://medium.com/@as27/a-simple-beginners-tutorial-to-io-writer-in-golang-2a13bfefea02)
-####### [Streaming IO in Go](https://medium.com/learning-the-go-programming-language/streaming-io-in-go-d93507931185)
+###### [io.Reader in depth](https://medium.com/@matryer/golang-advent-calendar-day-seventeen-io-reader-in-depth-6f744bb4320b)
+###### [A simple beginners tutorial to io.Writer in Golang](https://medium.com/@as27/a-simple-beginners-tutorial-to-io-writer-in-golang-2a13bfefea02)
+###### [Streaming IO in Go](https://medium.com/learning-the-go-programming-language/streaming-io-in-go-d93507931185)
 
 
 #### io.Reader
