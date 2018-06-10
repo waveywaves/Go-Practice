@@ -388,7 +388,5 @@ This function allows us to chain source reader to target writer and it is very e
 ## Things to Cover / Covered
 #### Reflection [1](https://blog.golang.org/laws-of-reflection), [2](https://medium.com/capital-one-developers/learning-to-use-go-reflection-822a0aed74b7)
 #### Goroutine Leak [1](https://medium.com/golangspec/goroutine-leak-400063aef468)
-#### Complete Channels [1](https://www.sohamkamani.com/blog/2017/08/24/golang-channels-explained/)
-#### Syncronization Queues [Synchronization queues in Golang](https://medium.com/golangspec/synchronization-queues-in-golang-554f8e3a31a4)
-#### Readers-Writers Problem [sync.RWMutex](https://medium.com/golangspec/sync-rwmutex-ca6c6c3208a0)
+#### Syncronization [1](https://medium.com/golangspec/synchronization-queues-in-golang-554f8e3a31a4), [4](https://medium.com/@fharding/mutexes-in-go-df0c30a138e4), [3](https://medium.com/golangspec/sync-rwmutex-ca6c6c3208a0), [4](https://www.sohamkamani.com/blog/2017/08/24/golang-channels-explained/)
 #### Conversions and Interfaces [1](https://medium.com/golangspec/conversions-in-go-4301e8d84067),[2](https://medium.com/golangspec/interfaces-in-go-part-ii-d5057ffdb0a6),[3](https://medium.com/golangspec/interfaces-in-go-part-iii-61f5e7c52fb5) 
