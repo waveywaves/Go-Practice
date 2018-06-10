@@ -361,10 +361,31 @@ We have converted the whole thing into two different routines considering main a
 * Close the channel after the WaitGroup Wait() exits.
 * Now the channel is populated and the values can be used.
 
+### 18> Streaming IO
+####### [io.Reader in depth](https://medium.com/@matryer/golang-advent-calendar-day-seventeen-io-reader-in-depth-6f744bb4320b)
+####### [A simple beginners tutorial to io.Writer in Golang](https://medium.com/@as27/a-simple-beginners-tutorial-to-io-writer-in-golang-2a13bfefea02)
+####### [Streaming IO in Go](https://medium.com/learning-the-go-programming-language/streaming-io-in-go-d93507931185)
+
+
+#### io.Reader
+io.Reader should be used whereever posible where we take byte arrays or strings as then we can use it to pass any kind of information. A lot of important Reader types return an io.Reader type object, eg. strings.NewReader, os.Open, bytes.Buffer. 
+
+##### Method of Use
+We can Read() from the io.Reader in use by getting the stream in a buffer periodically and using it for our purpose. We can even create our own reader which can read elements in a certain way. This is good in case we need to preprocess our data, we can use io.Reader to preprocess it before we take it in as input.
+
+
+#### io.Writer
+With io.Writer allows us to write a serialized stream of data into a buffer which we can read with io.Reader.
+
+##### Method of Use
+We use io.Writer to simply transfer what we have written to the transfer buffer to the Destination we want to write our data to.
+
+#### io.Copy
+This function allows us to chain source reader to target writer and it is very easy to use as we just have to pass in the writer annd the reader where the reader or the place we ahve to gfe tht e data from has to be initialized with a new instead of a make or we can get an error as make initializes without a pointer and new does.
+
 
 
 ## Things to Cover / Covered
-#### io.Reader in depth [1](https://medium.com/@matryer/golang-advent-calendar-day-seventeen-io-reader-in-depth-6f744bb4320b)
 #### Reflection [1](https://blog.golang.org/laws-of-reflection), [2](https://medium.com/capital-one-developers/learning-to-use-go-reflection-822a0aed74b7)
 #### Goroutine Leak [1](https://medium.com/golangspec/goroutine-leak-400063aef468)
 #### Complete Channels [1](https://www.sohamkamani.com/blog/2017/08/24/golang-channels-explained/)
