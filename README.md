@@ -383,7 +383,14 @@ We use io.Writer to simply transfer what we have written to the transfer buffer 
 #### io.Copy
 This function allows us to chain source reader to target writer and it is very easy to use as we just have to pass in the writer annd the reader where the reader or the place we ahve to gfe tht e data from has to be initialized with a new instead of a make or we can get an error as make initializes without a pointer and new does.
 
+### 19> Protocol Buffers
+###### [Basics of Protocol Buffers in Golang](https://tutorialedge.net/golang/go-protocol-buffer-tutorial/)
 
+#### *.proto Files
+This is where we have to code our schemas.
+
+#### Compilling *.proto Schemas
+When we are done defining the schemas, they have to be compiled so that they can be read by 
 
 ## Things to Cover
 #### Reflection [1](https://blog.golang.org/laws-of-reflection), [2](https://medium.com/capital-one-developers/learning-to-use-go-reflection-822a0aed74b7)
