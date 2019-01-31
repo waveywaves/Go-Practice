@@ -387,13 +387,68 @@ This function allows us to chain source reader to target writer and it is very e
 ###### [Basics of Protocol Buffers in Golang](https://tutorialedge.net/golang/go-protocol-buffer-tutorial/)
 
 #### *.proto Files
-This is where we have to code our schemas.
+This is where we have to code our schemas. The way we define payload in these .proto files is using schemas called messages and they are nomianally ordered with a distinct identifier given to each of them.
+
+```go
+syntax="proto3";
+package main;
+message SocialFollowers {
+    uint32 youtube = 1;
+    uint32 twitter = 2;
+}
+```
+
+Now they can be imported in other .proto files as below.
+
+```go
+syntax = "proto3";
+package main;
+import "social.proto";
+message Person {
+    string name = 1;
+    uint32 age = 2;
+    main.SocialFollowers SocialFollowers = 3;
+}
+```
 
 #### Compilling *.proto Schemas
-When we are done defining the schemas, they have to be compiled so that they can be read by 
+The *.proto files are compiled to give us *.pb.go files which are the actual go files which would be used. This go code which is generated contains Getters for each of the messages which are described.
+
+To compile .proto files we need to use the `protoc` command and we also need the `protoc-gen-go` command which will allow for the generation of the *.pb.go files.
+
+```sh
+cd 019-protobufbasics
+export GOPATH=$(pwd)
+export PATH=$PATH:$GOPATH/bin
+
+go get -u github.com/golang/protobuf/proto
+
+cd src
+protoc --go_out=. social.proto person.proto
+```
+
+After running the above command you should see that the *.pb.go files have been generated. Run the command below to see how the app runs.
+
+#### Checking out protobuf data representation
+
+```sh
+go install simpleApp
+cd 019-protobufbasics/bin
+./simpleApp
+```
+
+The above command should return how protobuf looks at data and what the Getters return.
+
+```
+[10 6 86 105 98 104 97 118 16 22 26 4 8 40 16 30]
+22
+Vibhav
+youtube:40 twitter:30
+```
 
 ## Things to Cover
 #### Reflection [1](https://blog.golang.org/laws-of-reflection), [2](https://medium.com/capital-one-developers/learning-to-use-go-reflection-822a0aed74b7)
 #### Goroutine Leak [1](https://medium.com/golangspec/goroutine-leak-400063aef468)
 #### Syncronization [1](https://medium.com/golangspec/synchronization-queues-in-golang-554f8e3a31a4), [2](https://medium.com/@fharding/mutexes-in-go-df0c30a138e4), [3](https://medium.com/golangspec/sync-rwmutex-ca6c6c3208a0), [4](https://www.sohamkamani.com/blog/2017/08/24/golang-channels-explained/)
 #### Conversions and Interfaces [1](https://medium.com/golangspec/conversions-in-go-4301e8d84067), [2](https://medium.com/golangspec/interfaces-in-go-part-ii-d5057ffdb0a6), [3](https://medium.com/golangspec/interfaces-in-go-part-iii-61f5e7c52fb5) 
+#### Protobuf [1](https://codeburst.io/protocol-buffers-part-1-serialization-library-for-microservices-37418e72908b) 

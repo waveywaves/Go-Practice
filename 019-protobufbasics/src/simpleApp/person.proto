@@ -1,0 +1,9 @@
+syntax = "proto3";
+package main;
+import "social.proto";
+
+message Person {
+    string name = 1;
+    uint32 age = 2;
+    main.SocialFollowers SocialFollowers = 3;
+}

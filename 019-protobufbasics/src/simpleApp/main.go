@@ -11,6 +11,10 @@ func main() {
 	vibhav := &Person{
 		Name: "Vibhav",
 		Age:  22,
+		SocialFollowers: &SocialFollowers{
+			Twitter: 30,
+			Youtube: 40,
+		},
 	}
 
 	data, err := proto.Marshal(vibhav)
@@ -28,4 +32,5 @@ func main() {
 
 	fmt.Println(newVibhav.GetAge())
 	fmt.Println(newVibhav.GetName())
+	fmt.Println(newVibhav.GetSocialFollowers())
 }
