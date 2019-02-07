@@ -135,7 +135,6 @@ func client() {
 	err = client.Call("Tasks.DeleteToDo", editedTodo, &reply)
 	client.Call("Tasks.GetTodos", "", &reply)
 	log.Println("4. Todos : ", reply)
-
 }
 
 func main() {

@@ -450,7 +450,12 @@ youtube:40 twitter:30
 ###### [RPC Server](https://medium.com/@OmisNomis/creating-an-rpc-server-in-go-3a94797ab833)
 RPC or Remote Procedure Calls are exactly what the name suggests. One can remotely call procedures which aren't present locally. So what this means is that a system in this case is able to invoke procedures or methods on a remote server. We are going to use the `net/rpc` package in go to help us make this happen.
 
+For the RPC Protocol, functions need to be specified in a particular way in an interface which would be registered to the RPC service we are running.
+These functions are supposed to have only two arguments, and one return(`error`). The first argument is the payload and the second is the `reply` which points to a `var reply <typeofreply>`. 
 
+Once the RPC is registered, we create a HTTPListener where these requests arrive and are handled by the RPC HTTPHandler instantiated beforehand.
+
+On the client side we need the datatypes of the objects which are being returned in the reply. We make Calls to the RPC Server using a RPC HTTPClient by passing the method name in the RPC Call which would be defined on the interface containing the methods.
 
 
 ## Things to Cover
