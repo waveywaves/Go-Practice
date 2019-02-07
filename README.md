@@ -411,7 +411,7 @@ message Person {
 }
 ```
 
-#### Compilling *.proto Schemas
+#### Compilling .proto Schemas
 The *.proto files are compiled to give us *.pb.go files which are the actual go files which would be used. This go code which is generated contains Getters for each of the messages which are described.
 
 To compile .proto files we need to use the `protoc` command and we also need the `protoc-gen-go` command which will allow for the generation of the *.pb.go files.
@@ -445,6 +445,13 @@ The above command should return how protobuf looks at data and what the Getters 
 Vibhav
 youtube:40 twitter:30
 ```
+
+### 20> RPC Server and Client implementation
+###### [RPC Server](https://medium.com/@OmisNomis/creating-an-rpc-server-in-go-3a94797ab833)
+RPC or Remote Procedure Calls are exactly what the name suggests. One can remotely call procedures which aren't present locally. So what this means is that a system in this case is able to invoke procedures or methods on a remote server. We are going to use the `net/rpc` package in go to help us make this happen.
+
+
+
 
 ## Things to Cover
 #### Reflection [1](https://blog.golang.org/laws-of-reflection), [2](https://medium.com/capital-one-developers/learning-to-use-go-reflection-822a0aed74b7)
