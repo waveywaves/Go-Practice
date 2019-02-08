@@ -447,7 +447,7 @@ youtube:40 twitter:30
 ```
 
 ### 20> RPC Server and Client implementation
-###### [RPC Server](https://medium.com/@OmisNomis/creating-an-rpc-server-in-go-3a94797ab833)
+###### [RPC Server and Client](https://medium.com/@OmisNomis/creating-an-rpc-server-in-go-3a94797ab833)
 RPC or Remote Procedure Calls are exactly what the name suggests. One can remotely call procedures which aren't present locally. So what this means is that a system in this case is able to invoke procedures or methods on a remote server. We are going to use the `net/rpc` package in go to help us make this happen.
 
 For the RPC Protocol, functions need to be specified in a particular way in an interface which would be registered to the RPC service we are running.
@@ -457,6 +457,12 @@ Once the RPC is registered, we create a HTTPListener where these requests arrive
 
 On the client side we need the datatypes of the objects which are being returned in the reply. We make Calls to the RPC Server using a RPC HTTPClient by passing the method name in the RPC Call which would be defined on the interface containing the methods.
 
+### 21> The Context Package
+###### [justforfunc #9: The Context Package](https://www.youtube.com/watch?v=LSzR0VEraWw&t=1546s)
+
+Context is used in HTTP servers and clients to make them less wasteful and more efficient. It is usually used in cases when one needs to propogate a Cancellation Request. In a scenario where we make a certain request, it should be possible for us to cancel that request from our end without wasting resources on the request. 
+
+HTTP requests have a context which can be used to supplement our needs and we can also attach a predefined context to a New HTTP Request which and see to it that we are propogating cancellation whenever we want. This can be used to cancel the HTTP requests on certain events which might happen while handling the same
 
 ## Things to Cover
 #### Reflection [1](https://blog.golang.org/laws-of-reflection), [2](https://medium.com/capital-one-developers/learning-to-use-go-reflection-822a0aed74b7)
