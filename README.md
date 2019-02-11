@@ -464,6 +464,77 @@ Context is used in HTTP servers and clients to make them less wasteful and more 
 
 HTTP requests have a context which can be used to supplement our needs and we can also attach a predefined context to a New HTTP Request which and see to it that we are propogating cancellation whenever we want. This can be used to cancel the HTTP requests on certain events which might happen while handling the same
 
+### 22> Protobuf Server and Client implementation
+###### [justforfunc #30](https://www.youtube.com/watch?v=_jQ3i_fyqGA)
+
+We have extended upon `019-protobufbasics` and learnt how to use encode the data, store it and vice-a-versa in the form of a todoapp, where we add the tasks in a file which and then read it from there when we need to.
+
+### 23> GRPC Basics
+###### [justforfunc #31](https://www.youtube.com/watch?v=uolTUtioIrc&t=322s)
+
+Extending upon what we have done in `022-protobuf`, we are going to convert the entire application that we have made into a GRPC Server and also write a Client for the same which can invoke Remote Procedure Calls. Before this, we had done RPC which is the protocol on which GRPC is build. The difference between GRPC and RPC is, GRPC uses protobuf as it's medium of communication and all the schema is defined in protobuf itself.
+
+We modify the `todo.proto` file to have a new message type.
+```go
+message TaskList {
+    repeated Task tasks = 1;
+}
+```
+Here we know that Task has already been defined as another message. We are using it like a type in this case and then saying that we are expecting a slice of Tasks. That is why we have mentioned the `repeated` keyword which basically points this out.
+
+```go
+service Tasks {
+    rpc 
+}
+```
+If we add the above code to the .proto file and try to compile it with `protoc -I todo.proto --go_out=.`. We can notice that the compilation hasn't worked. Now this is because, when we say service we are specifically saying that it needs to be a GRPC service. In this case we are going to pass a grpc plugin which will help compile the service and the command would be `protoc -I todo.proto --go_out=plugins=grpc:.`
+
+```go
+type taskServer struct{}
+
+func (s taskServer) List(ctx context.Context, void *todo.Void) (*todo.TaskList, error) {
+	return nil, nil
+}
+
+func main() {
+	var tasks taskServer
+
+	srv := grpc.NewServer()
+	todo.RegisterTasksServer(srv, tasks)
+}
+```
+Similar to RPC we have to register a GRPC Server with the correct type interface containing all the functions we need to make the GRPC calls.
+
+We define the .proto file with the services and messages which have to be passed, as done below.
+```go
+syntax = "proto3";
+
+package todo;
+
+message Task {
+    string todo = 1;
+    bool done = 2;
+}
+
+message TaskList {
+    repeated Task tasks = 1;
+}
+
+message Text {
+    string text = 1;
+}
+
+message Void {}
+
+service Tasks {
+    rpc List(Void) returns(TaskList) {}
+    rpc Add(Text) returns(Task) {}
+}
+```
+Once we define and compile the above with the grpc plugin, we register the GRPC Server function and get the client definition from the generated .pb.go file. 
+
+
+
 ## Things to Cover
 #### Reflection [1](https://blog.golang.org/laws-of-reflection), [2](https://medium.com/capital-one-developers/learning-to-use-go-reflection-822a0aed74b7)
 #### Goroutine Leak [1](https://medium.com/golangspec/goroutine-leak-400063aef468)
