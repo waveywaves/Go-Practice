@@ -457,7 +457,7 @@ Once the RPC is registered, we create a HTTPListener where these requests arrive
 
 On the client side we need the datatypes of the objects which are being returned in the reply. We make Calls to the RPC Server using a RPC HTTPClient by passing the method name in the RPC Call which would be defined on the interface containing the methods.
 
-### 21> The Context Package
+### 21> The `context` Package
 ###### [justforfunc #9: The Context Package](https://www.youtube.com/watch?v=LSzR0VEraWw&t=1546s)
 
 Context is used in HTTP servers and clients to make them less wasteful and more efficient. It is usually used in cases when one needs to propogate a Cancellation Request. In a scenario where we make a certain request, it should be possible for us to cancel that request from our end without wasting resources on the request. 
@@ -532,8 +532,13 @@ service Tasks {
 }
 ```
 Once we define and compile the above with the grpc plugin, we register the GRPC Server function and get the client definition from the generated .pb.go file. 
+Everything else we do here is similar to what we do in 020-rpc and 022-protobuf. Even the way we encode and save the protobuf data. 
 
+GRPC allows us for faster communication with HTTP/2 over TCP/IP with a lot more functionality than rest allowing for bidirectional streams as well a lot more functionality than the usual GET, POST, PUT, PATCH.
 
+### 24> Developing and testing Kubernetes applications using `client-go` 
+###### (Unit Testing with Kubernetes Client Go)[https://medium.com/@e_frogers/unit-testing-with-kubernetes-client-go-283b11aaa7db]
+###### (Testing Kubernetes Go Applications)[https://itnext.io/testing-kubernetes-go-applications-f1f87502b6ef]
 
 ## Things to Cover
 #### Reflection [1](https://blog.golang.org/laws-of-reflection), [2](https://medium.com/capital-one-developers/learning-to-use-go-reflection-822a0aed74b7)
